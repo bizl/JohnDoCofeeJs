@@ -1,8 +1,6 @@
 <html>
 <head>
     <title>John Do's Coffee </title>
-
-
 </head>
 
 <body> 
@@ -10,7 +8,8 @@
         <legend>Find shop</legend>
 
         <div>   
-            <span>Search shops: </span> <input type="text" maxlength="30"/> 
+            <span>Search shops: </span> 
+            <input type="text" maxlength="30" onkeyup="searchAddress"/> 
         </div>
 
         <div id="divSearchResults"> 
@@ -20,12 +19,15 @@
     </fieldset>
 
 
-        <script type="text/javascript">
-
+    <script type="text/javascript">
         
         var divSearchResults = document.getElementById("divSearchResults"); 
-        alert(divSearchResults.id);
+         
 
+
+        function searchAddress(){
+            
+        }
     </script> 
     
 </body>
