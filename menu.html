@@ -15,9 +15,9 @@
 
         <div>   
             <span class="hidden">Search shops: </span> 
-            <input  class="hidden" type="text" maxlength="30" onkeyup="searchAddress()"/> 
+            <input  class="hidden" type="text" maxlength="30" onkeyup="SearchAddress()"/> 
 
-            <div id="divRoyalMailPc"> 
+            <div id="divRoyalMailPostCodeSearch"> 
             </div> 
         </div>
 
@@ -30,19 +30,19 @@
 
     <script type="text/javascript">
         
-        var divSearchResults = document.getElementById("divSearchResults"); 
-        var divRoyalMail = document.getElementById("divRoyalMail"); 
+        var theSearchResultsDiv = document.getElementById("divSearchResults"); 
+        var theRoyalMailDiv = document.getElementById("divRoyalMailPostCodeSearch"); 
 
         // make the http call, pass in the method that gets run when response is obtained
-        httpGetAsync("http://www.royalmail.com/find-a-postcode#rml-postcode-finder", httpGetAsyncCallBack);
+        HttpGetAsync("http://www.royalmail.com/find-a-postcode", HttpGetAsyncCallBack);
 
 
-        function searchAddress(){
+        function SearchAddress(){
              
             
         }
 
-        function httpGetAsync(theUrl, callback)
+        function HttpGetAsync(theUrl, callback)
         {
             var xmlHttp = new XMLHttpRequest();
             xmlHttp.onreadystatechange = function() { 
@@ -50,13 +50,17 @@
                     callback(xmlHttp.responseText);
             }
             xmlHttp.open("GET", theUrl, true); // true for asynchronous 
-            xmlHttp.setRequestHeader("Access-Control-Allow-Origin", "true");
+            xmlHttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+            xmlHttp.setRequestHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
+            xmlHttp.setRequestHeader("Access-Control-Max-Age", "1000");
+            xmlHttp.setRequestHeader("Access-Control-Allow-Headers", "x-requested-with, Content-Type, origin, authorization, accept, client-security-token");
+             
             xmlHttp.send(null);
         }
 
-        function httpGetAsyncCallBack(response)
+        function HttpGetAsyncCallBack(response)
         {
-            divRoyalMail.innerHTML = response; 
+            theRoyalMailDiv.innerHTML = response; 
         }
 
     </script> 
