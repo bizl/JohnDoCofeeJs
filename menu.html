@@ -38,8 +38,13 @@
 
 
         function SearchAddress(textbox){ 
-            alert(textbox.value); 
-              HttpGetAsync("http://maps.googleapis.com/maps/api/geocode/xml?address=" + textbox.value  + "&sensor=false", HttpGetAsyncCallBack);
+            var timeout;
+
+            clearTimeout(timeout);
+            timeout = setTimeout(function(){ 
+                HttpGetAsync("http://maps.googleapis.com/maps/api/geocode/xml?address=" + textbox.value  + "&sensor=false", HttpGetAsyncCallBack);
+            }, 2000);   // wait 2 seconds and then execute if search isnt called again 
+            
         }
 
         function HttpGetAsync(theUrl, callback)
