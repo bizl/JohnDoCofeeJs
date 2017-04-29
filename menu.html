@@ -1,6 +1,12 @@
 <html>
 <head>
     <title>John Do's Coffee </title>
+
+<style type="text/css">
+    .hidden {display:none} 
+</style>
+
+
 </head>
 
 <body> 
@@ -8,10 +14,11 @@
         <legend>Find shop</legend>
 
         <div>   
-            <span>Search shops: </span> 
-            <input type="text" maxlength="30" onkeyup="searchAddress()"/> 
+            <span class="hidden">Search shops: </span> 
+            <input  class="hidden" type="text" maxlength="30" onkeyup="searchAddress()"/> 
 
-            <iframe border=0 height="200px" src="http://www.royalmail.com/find-a-postcode#rml-postcode-finder">
+            <iframe border=0 height="200px" width="100%" 
+            src="http://www.royalmail.com/find-a-postcode#rml-postcode-finder">
             </iframe>
         </div>
 
