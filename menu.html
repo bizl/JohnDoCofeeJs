@@ -15,7 +15,7 @@
 
         <div>   
             <span class="hidden">Search shops: </span> 
-            <input  class="hidden" type="text" maxlength="30" onkeyup="SearchAddress()"/> 
+            <input  type="text" maxlength="30" onkeyup="SearchAddress(this)"/> 
 
             <div id="divRoyalMailPostCodeSearch"> 
             </div> 
@@ -34,12 +34,12 @@
         var theRoyalMailDiv = document.getElementById("divRoyalMailPostCodeSearch"); 
 
         // make the http call, pass in the method that gets run when response is obtained
-        HttpGetAsync("http://www.royalmail.com/find-a-postcode", HttpGetAsyncCallBack);
+      
 
 
-        function SearchAddress(){
-             
-            
+        function SearchAddress(textbox){ 
+            alert(textbox.value); 
+              HttpGetAsync("http://maps.googleapis.com/maps/api/geocode/xml?address=" + textbox.value  + "&sensor=false", HttpGetAsyncCallBack);
         }
 
         function HttpGetAsync(theUrl, callback)
