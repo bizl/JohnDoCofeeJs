@@ -16,9 +16,7 @@
         <div>   
             <span class="hidden">Search shops: </span> 
             <input  type="text" maxlength="30" onkeyup="SearchAddress(this)"/> 
-
-            <div id="divRoyalMailPostCodeSearch"> 
-            </div> 
+ 
         </div>
 
         <div id="divSearchResults"> 
@@ -31,10 +29,7 @@
     <script type="text/javascript">
         
         var theSearchResultsDiv = document.getElementById("divSearchResults"); 
-        var theRoyalMailDiv = document.getElementById("divRoyalMailPostCodeSearch"); 
-
-        // make the http call, pass in the method that gets run when response is obtained
-      
+        var theResults = document.getElementById("divSearchResults"); 
 
 
         function SearchAddress(textbox){ 
@@ -42,6 +37,8 @@
 
             clearTimeout(timeout);
             timeout = setTimeout(function(){ 
+                
+                // make the http call, pass in the method that gets run when response is obtained 
                 HttpGetAsync("http://maps.googleapis.com/maps/api/geocode/xml?address=" + textbox.value  + "&sensor=false", HttpGetAsyncCallBack);
             }, 3000);   // wait 2 seconds and then execute if search isnt called again 
             
@@ -65,7 +62,7 @@
 
         function HttpGetAsyncCallBack(response)
         {
-            theRoyalMailDiv.innerHTML = response; 
+            theResults.innerHTML = response; 
         }
 
     </script> 
